@@ -36,15 +36,27 @@ createImage(); //cre la mia lista di immagini
 const allImage = document.querySelectorAll(".item"); // salvo le mie immagini in un array
 
 next.addEventListener("click", function () {
-	allImage[currentImage].classList.remove("active");
-	currentImage++;
-	allImage[currentImage].classList.add("active");
+	if (currentImage < allImage.length - 1) {
+		allImage[currentImage].classList.remove("active");
+		currentImage++;
+		allImage[currentImage].classList.add("active");
+	} else {
+		allImage[currentImage].classList.remove("active");
+		currentImage = 0;
+		allImage[currentImage].classList.add("active");
+	}
 });
 
 prev.addEventListener("click", function () {
-	allImage[currentImage].classList.remove("active");
-	currentImage--;
-	allImage[currentImage].classList.add("active");
+	if (currentImage > 0) {
+		allImage[currentImage].classList.remove("active");
+		currentImage--;
+		allImage[currentImage].classList.add("active");
+	} else {
+		allImage[currentImage].classList.remove("active");
+		currentImage = allImage.length - 1;
+		allImage[currentImage].classList.add("active");
+	}
 });
 
 //FUNZIONI
